@@ -6,7 +6,7 @@ package csc260project;
 
 /**
  *
- * @author darri
+ * @author darrin
  */
 import java.io.*;
 import java.util.ArrayList;
