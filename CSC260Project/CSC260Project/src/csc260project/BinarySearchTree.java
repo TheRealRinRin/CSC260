@@ -8,5 +8,5 @@ package csc260project;
  * @author hlib
  */
 public class BinarySearchTree{
-
+// Class implementation goes here
 }
