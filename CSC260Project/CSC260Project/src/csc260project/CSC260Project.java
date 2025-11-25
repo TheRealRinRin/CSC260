@@ -6,7 +6,7 @@ package csc260project;
 
 /**
  *
- * @author darri
+ * @author darrin phimphisane
  */
 public class CSC260Project {
 
