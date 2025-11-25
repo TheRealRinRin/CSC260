@@ -9,7 +9,7 @@ package csc260project;
  */
 public class BinarySearchTree{
 // Class implementation goes here
-
+//Hlib good work
 private class Node{
     int data;
     Node left, right;
