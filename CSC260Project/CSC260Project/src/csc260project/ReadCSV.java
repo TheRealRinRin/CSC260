@@ -19,8 +19,7 @@ public class ReadCSV {
         String line = "";
         try{
             reader = new BufferedReader(new FileReader(file));
-            ArrayList<String> electionData = new ArrayList<>();
-           
+            ArrayList<String> electionData = new ArrayList<>();          
             while((line=reader.readLine()) != null){
                 String[] Edata = line.split(",");
                 
@@ -35,15 +34,20 @@ public class ReadCSV {
             }
             System.out.println(electionData.get(4));
             System.out.println(Integer.parseInt(electionData.get(5)));
-            System.out.println(electionData.size());
+            System.out.println("Size: " +electionData.size());
             
-            LinkedList myList = new LinkedList();
-            for(int i = 5; i<electionData.size()-5; i+=5){
+            LinkedList myList = new LinkedList<>();
+            for(int i = 5; i<electionData.size()-1; i+=5){
                 int ElectionYear = Integer.parseInt(electionData.get(i));
                 int ElectionVotes = Integer.parseInt(electionData.get(i+4));            
                 myList.addLast(ElectionYear, electionData.get(i+1), electionData.get(i+2), electionData.get(i+3), ElectionVotes);
             }
+            myList.forwardDisplay();
             myList.find("Linda Young");
+            
+            myList.forwardDisplay();
+            myList.addAtState(2016, "Massachusetts", "Republican", "Darrin Phimphisane", 50);
+            myList.find("George Allen");
             myList.forwardDisplay();
         }catch(Exception e){
             e.printStackTrace();

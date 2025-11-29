@@ -26,6 +26,7 @@ public class LinkedList<E> {
             this.candidate = candidate;
             this.votes = votes;
             this.next = next;
+            this.prev = prev;
         }        
         // Getters        
         public int getYear(){
@@ -87,33 +88,37 @@ public class LinkedList<E> {
     public void forwardDisplay(){
         Node<E> Current; 
         Current = head;
-        System.out.println("Display: ");
+        System.out.println("---------------------- Display ----------------------");
         System.out.println();
         for(int i = 0; i < size; i++){
             //System.out.println("Year: "+Current.getYear()+" | State: "+ Current.getState()+" | Party: "+ Current.getParty()+" | Candidate: "+ Current.getCandidate()+" | Votes: "+ Current.getVotes());
-            System.out.printf("Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-15s | Votes: %-15d%n", Current.getYear(), Current.getState(), Current.getParty(), Current.getCandidate(), Current.getVotes());
+            System.out.printf("Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", Current.getYear(), Current.getState(), Current.getParty(), Current.getCandidate(), Current.getVotes());
             Current = Current.next;
         }
     }        
     
     // Update Methods
     public void addFirst(int year, String state, String party, String candidate, int vote){
-        Node<E> newNode = new Node(year, state, party, candidate, vote, null, tail);
+        Node<E> newNode = new Node(year, state, party, candidate, vote, head, null);
         if(size==0){
-            tail = head = newNode;
+            head = tail = newNode;
+            head.next = head;
+            head.prev = head;
         }else{
             newNode.next = head;
-            head.prev = newNode;
-            head = newNode; 
-            head.prev = tail;
-            tail.next = head; 
+            newNode.prev = tail;
+            head.prev = newNode; 
+            tail.next = newNode;
+            head = newNode;
         }
         size++;
     }
     public void addLast(int year, String state, String party, String candidate, int vote){
-        Node<E> newNode = new Node(year, state, party, candidate, vote, null, tail);
+        Node<E> newNode = new Node(year, state, party, candidate, vote, null, null);
         if(size==0){
             head = tail = newNode;       
+            head.next = head;
+            head.prev = head; 
         }else{
             newNode.next = head; 
             newNode.prev = tail; 
@@ -136,11 +141,30 @@ public class LinkedList<E> {
         }
     }
     
-    public void addAtPos(int year, String state, String party, String candidate, int vote){
+    public void addAtState(int year, String state, String party, String candidate, int vote){
         Node<E> newNode = new Node(year, state, party, candidate, vote, head, null);
-        
-        while(newNode.getState()!=""){
-            
-        }
+        Node<E> Current = head;
+        if(size==0){
+            addFirst(year, state, party, candidate, vote);
+            return;
+        }else{
+            int count = 0;
+            while(count < size){
+                if(Current.getState().equals(state)){
+                    newNode.next = Current.next;
+                    newNode.prev = Current;
+                    Current.next.prev = newNode;
+                    Current.next = newNode;
+                    if(Current == tail){
+                        tail = newNode;
+                    }
+                    size++;
+                    return;   
+                }
+                Current = Current.next;
+                count++;
+            }        
+            addLast(year, state, party, candidate, vote);    
+        }               
     }
 }
