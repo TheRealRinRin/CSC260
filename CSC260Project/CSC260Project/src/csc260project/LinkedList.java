@@ -78,7 +78,31 @@ public class LinkedList<E> {
     private Node<E> tail;
     private int size = 0;
     public LinkedList(){}
-    // Access Methods
+    // Access Methods 2.0
+    public String getHead(){
+        return head.toString();
+    }
+    public String ngetHead(){
+        return head.next.toString();
+    }
+    public String ngetState(){
+        return head.next.getState();
+    }
+    public int ngetYear(){
+        return head.getYear();
+    }          
+    public String ngetParty(){
+        return head.getParty();
+    }        
+    public String ngetCandidate(){
+        return head.getCandidate();
+    }     
+    public int ngetVotes(){
+        return head.getVotes();
+    } 
+
+
+    //More Access Methods
     public int size(){
         return size;
     }

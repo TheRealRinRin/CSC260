@@ -49,8 +49,16 @@ public class ReadCSV {
             myList.addAtState(2016, "Massachusetts", "Republican", "Darrin Phimphisane", 50);
             myList.find("George Allen");
             myList.forwardDisplay();
+
+           
+            QueueApp app = new QueueApp();
+            app.byState(myList);
+            
+            
+            
         }catch(Exception e){
             e.printStackTrace();
-        }          
+        } 
+                 
     }
 }

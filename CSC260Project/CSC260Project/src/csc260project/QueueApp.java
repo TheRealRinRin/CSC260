@@ -113,6 +113,43 @@ public class QueueApp<g> {
         }            
             
     }
+
+    public static void byState(LinkedList<?> list){
+        // separate data by state — traverse nodes from head using LinkedList API
+        
+       String currentState;
+
+       currentState = list.ngetState();
+       
+       while(list.getHead() != null){
+           if(currentState.equals(list.ngetState())){
+               System.out.printf(
+                    "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
+                    list.ngetYear(), list.ngetState(), list.ngetParty(), list.ngetCandidate(), 
+                    list.ngetVotes()
+            );
+
+               list.ngetHead();
+               System.out.println("Going to next state...");
+               break;
+
+           } else {
+               currentState = list.ngetState();
+               System.out.println("---------------------------------------------------");
+               System.out.printf(
+                    "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
+                    list.ngetYear(), list.ngetState(), 
+                    list.ngetParty(), list.ngetCandidate(), list.ngetVotes()
+                );
+
+               list.ngetHead();
+           }
+       }
+
+       //System.out.println(currentState);
+
+       
+    }
  
 
 }
