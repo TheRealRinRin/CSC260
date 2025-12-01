@@ -2,7 +2,8 @@ package csc260project;
 // use queue to separate data into different sections
 public class QueueApp<g> {
     // processs the items from the list into different batch state, year, party,
-
+    // bst alows to traverse by vote count
+    // queue allow by year, state, party
 
     /**
      * @param args the command line arguments
