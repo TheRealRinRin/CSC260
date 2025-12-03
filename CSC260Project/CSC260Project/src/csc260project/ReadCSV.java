@@ -14,7 +14,7 @@ public class ReadCSV {
     public static void main(String[] args){
         
         //CSV Stands for comma seperated values
-        String file = "CSC260Project/CSC260Project/src/csc260project/election_data.csv";
+        String file = "./src/csc260project/election_data.csv";
         BufferedReader reader = null;
         String line = "";
         try{
@@ -48,17 +48,14 @@ public class ReadCSV {
             myList.forwardDisplay();
             myList.addAtState(2016, "Massachusetts", "Republican", "Darrin Phimphisane", 50);
             myList.find("George Allen");
-            myList.forwardDisplay();
-
-           
-            QueueApp app = new QueueApp();
-            app.byState(myList);
+            myList.forwardDisplay();          
+            
+            QueueApp.byState(myList);
             
             
             
         }catch(Exception e){
             e.printStackTrace();
-        } 
-                 
+        }               
     }
 }
