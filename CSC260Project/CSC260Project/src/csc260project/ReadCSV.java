@@ -52,6 +52,7 @@ public class ReadCSV {
             
             QueueApp.byState(myList);
             QueueApp.byYear(myList);
+            QueueApp.byParty(myList);
             
             
         }catch(Exception e){

@@ -191,4 +191,41 @@ public class LinkedList<E> {
             addLast(year, state, party, candidate, vote);    
         }               
     }
+
+    public void addInOrderByYear(int year, String state, String party, String candidate, int vote){
+        Node<E> newNode = new Node(year, state, party, candidate, vote, head, null);
+        Node<E> Current = head;
+        if(size==0){
+            addFirst(year, state, party, candidate, vote);
+            return;
+        }else{
+            int count = 0;
+            while(count < size){
+                if(Current.getYear() > year){
+                    newNode.next = Current;
+                    newNode.prev = Current.prev;
+                    Current.prev.next = newNode;
+                    Current.prev = newNode;
+                    if(Current == head){
+                        head = newNode;
+                    }
+                    size++;
+                    return;   
+                }
+                Current = Current.next;
+                count++;
+            }        
+            addLast(year, state, party, candidate, vote);    
+        }               
+    }
+
+    public LinkedList<?> sortingByYear(){
+        LinkedList<E> sortedList = new LinkedList<>();
+        Node<E> current = head;
+        for(int i = 0; i < size; i++){
+            sortedList.addInOrderByYear(current.getYear(), current.getState(), current.getParty(), current.getCandidate(), current.getVotes());
+            current = current.next;
+        }
+        return sortedList;
+    }
 }
