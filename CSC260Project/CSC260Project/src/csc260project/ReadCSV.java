@@ -21,20 +21,18 @@ public class ReadCSV {
             reader = new BufferedReader(new FileReader(file));
             ArrayList<String> electionData = new ArrayList<>();          
             while((line=reader.readLine()) != null){
-                String[] Edata = line.split(",");
-                
-                for(String index : Edata){
-                    
-                    System.out.printf("%-15s", index);  
-                }
+                String[] Edata = line.split(",");                
+                //for(String index : Edata){
+                    //System.out.printf("%-15s", index);  
+                //}
                 System.out.println();
                 for(int i = 0; i < Edata.length; i++){
                     electionData.add(Edata[i]);
                 }
             }
-            System.out.println(electionData.get(4));
-            System.out.println(Integer.parseInt(electionData.get(5)));
-            System.out.println("Size: " +electionData.size());
+            //System.out.println(electionData.get(4));
+            //System.out.println(Integer.parseInt(electionData.get(5)));
+            //System.out.println("Size: " +electionData.size());
             
             LinkedList myList = new LinkedList<>();
             for(int i = 5; i<electionData.size()-1; i+=5){
@@ -42,19 +40,25 @@ public class ReadCSV {
                 int ElectionVotes = Integer.parseInt(electionData.get(i+4));            
                 myList.addLast(ElectionYear, electionData.get(i+1), electionData.get(i+2), electionData.get(i+3), ElectionVotes);
             }
-            myList.forwardDisplay();
-            myList.find("Linda Young");
+            //myList.forwardDisplay();
+            //myList.find("Linda Young");
             
-            myList.forwardDisplay();
-            myList.addAtState(2016, "Massachusetts", "Republican", "Darrin Phimphisane", 50);
-            myList.find("George Allen");
-            myList.forwardDisplay();          
+            //myList.forwardDisplay();
+            //myList.addAtState(2016, "Massachusetts", "Republican", "Darrin Phimphisane", 50);
+            //myList.find("George Allen");
+            //myList.forwardDisplay();          
             
             QueueApp.byState(myList);
             QueueApp.byYear(myList);
             QueueApp.byParty(myList);
-            
-            
+            myList.addAtState(2016, "Massachusetts", "Republican", "Darrin Phimphisane", 50);
+            myList.addAtState(2020, "California", "Democrat", "Loens Paul", 50);
+            myList.forwardDisplay();
+            myList.deleteFirst();
+            myList.forwardDisplay();
+            myList.deleteLast();
+            myList.deleteCandidate("Loens Paul");
+            myList.forwardDisplay();
         }catch(Exception e){
             e.printStackTrace();
         }               

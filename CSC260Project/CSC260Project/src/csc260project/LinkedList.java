@@ -166,29 +166,86 @@ public class LinkedList<E> {
     }
     
     public void addAtState(int year, String state, String party, String candidate, int vote){
-        Node<E> newNode = new Node(year, state, party, candidate, vote, head, null);
+    if(size==0){
+        addFirst(year, state, party, candidate, vote);
+        return;
+    }
+    Node<E> Current = head;
+    int count = 0;
+    while(count < size){
+        if(Current.getState().equals(state)){
+            if(Current == head){
+                addFirst(year, state, party, candidate, vote);
+            } else {
+                Node<E> newNode = new Node(year, state, party, candidate, vote, head, null);
+                newNode.next = Current;
+                newNode.prev = Current.prev;
+                Current.prev.next = newNode;
+                Current.prev = newNode;
+                size++;
+            }
+            System.out.println("Candidate "+candidate+" added.");
+            return;   
+        }
+        Current = Current.next;
+        count++;
+    }        
+    addLast(year, state, party, candidate, vote);    
+    System.out.println("Candidate "+candidate+" added.");
+}
+
+    public void deleteFirst(){
+        if(head == null){
+            System.out.println("List is empty, cannot delete");
+        }
+        head = head.next.prev;
+        tail.next = head.next;
+        head = head.next;
+        System.out.println("First node deleted");
+        size--;
+        if(size==0){
+            head = tail = null;
+        }
+    }
+    public void deleteLast(){
+        if(head == null){
+            System.out.println("List is empty, cannot delete");
+        }
+        tail = tail.prev;
+        tail.next = head;
+        head.prev = tail;
+        System.out.println("Last node deleted");
+        size--;
+        if(size==0){
+            head = tail = null;
+        }
+    }
+
+    public void deleteCandidate(String candidate){
         Node<E> Current = head;
         if(size==0){
-            addFirst(year, state, party, candidate, vote);
+            System.out.println("List is empty, cannot delete");
             return;
         }else{
             int count = 0;
             while(count < size){
-                if(Current.getState().equals(state)){
-                    newNode.next = Current.next;
-                    newNode.prev = Current;
-                    Current.next.prev = newNode;
-                    Current.next = newNode;
-                    if(Current == tail){
-                        tail = newNode;
+                if(Current.getCandidate().equals(candidate)){
+                    Current.prev.next = Current.next;
+                    Current.next.prev = Current.prev;
+                    if(Current == head){
+                        head = Current.next;
                     }
-                    size++;
+                    if(Current == tail){
+                        tail = Current.prev;
+                    }
+                    size--;
+                    System.out.println("Node with candidate "+candidate+" deleted");
                     return;   
                 }
                 Current = Current.next;
                 count++;
             }        
-            addLast(year, state, party, candidate, vote);    
+            System.out.println("Candidate "+candidate+" not found, cannot delete");    
         }               
     }
 
