@@ -82,11 +82,11 @@ public class LinkedList<E> {
     public String getHead(){
         return head.toString();
     }
-    public String ngetHead(){
-        return head.next.toString();
+    public void ngetHead(){
+        head = head.next;
     }
     public String ngetState(){
-        return head.next.getState();
+        return head.getState();
     }
     public int ngetYear(){
         return head.getYear();
