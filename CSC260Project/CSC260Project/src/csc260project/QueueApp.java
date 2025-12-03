@@ -122,7 +122,12 @@ public class QueueApp<g> {
         currentState = list.ngetState();
         int count = 0;
        
-        System.out.println("Printing by State...");
+        System.out.println("\n \n Printing by State...");
+        if(count == 0){
+            System.out.println(currentState);
+            System.out.println("---------------------------------------------------");
+        }
+
         while(count < list.size()){ 
             
             // printing current cadidate info
@@ -136,9 +141,10 @@ public class QueueApp<g> {
                 );
           
            } else {
-                System.out.println("---------------------------------------------------");
                 currentState = list.ngetState();
                 System.out.println(currentState);
+                System.out.println("---------------------------------------------------");
+                
 
                System.out.printf(
                     "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
@@ -149,6 +155,55 @@ public class QueueApp<g> {
                 if(list.ngetState() == null){
                     break;
                 }
+
+                //ystem.out.println("Going to next state...");
+                //break;
+           }
+
+           list.ngetHead();
+           count++;
+       }
+
+     
+    }
+
+    public static void byYear(LinkedList<?> list){
+        // separate data by state — traverse nodes from head using LinkedList API
+        if(list == null || list.isEmpty()) return;
+        int currentYear;
+
+        currentYear= list.ngetYear();
+        int count = 0;
+       
+        System.out.println("\n \n Printing by Year...");
+        if(count == 0){
+            System.out.println(currentYear);
+            System.out.println("---------------------------------------------------");
+        }
+
+        while(count < list.size()){ 
+            
+            // printing current cadidate info
+                        
+            
+           if(currentYear == (list.ngetYear())){
+               System.out.printf(
+                    "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
+                    list.ngetYear(), list.ngetState(), list.ngetParty(), list.ngetCandidate(), 
+                    list.ngetVotes()
+                );
+          
+           } else {
+                currentYear = list.ngetYear();
+                System.out.println("\n"+currentYear);
+                System.out.println("---------------------------------------------------");
+                
+
+               System.out.printf(
+                    "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
+                    list.ngetYear(), list.ngetState(), 
+                    list.ngetParty(), list.ngetCandidate(), list.ngetVotes()
+                );
 
                 //ystem.out.println("Going to next state...");
                 //break;

@@ -51,7 +51,7 @@ public class ReadCSV {
             myList.forwardDisplay();          
             
             QueueApp.byState(myList);
-            
+            QueueApp.byYear(myList);
             
             
         }catch(Exception e){
