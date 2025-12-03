@@ -219,54 +219,58 @@ public class QueueApp<g> {
      
     }
 
-    public static void byParty(LinkedList<?> list){
+   public static void byParty(LinkedList<?> list){
         // separate data by state — traverse nodes from head using LinkedList API
         if(list == null || list.isEmpty()) return;
         String currentParty;
 
-        currentParty= list.ngetParty();
+        
         int count = 0;
+
+        LinkedList<?> nList = list.sortedByParty();
+        currentParty= nList.ngetParty();
        
-        System.out.println("\n \n Printing by Year...");
+        System.out.println("\n \n Printing by Party...");
         if(count == 0){
             System.out.println(currentParty);
             System.out.println("---------------------------------------------------");
         }
 
-        while(count < list.size()){ 
+        while(count < nList.size()){ 
             
             // printing current cadidate info
                         
             
-           if( currentParty.equals(list.ngetParty())){
+           if(currentParty.equals(nList.ngetParty())){
                System.out.printf(
                     "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
-                    list.ngetYear(), list.ngetState(), list.ngetParty(), list.ngetCandidate(), 
-                    list.ngetVotes()
+                    nList.ngetYear(), nList.ngetState(), nList.ngetParty(), nList.ngetCandidate(), 
+                    nList.ngetVotes()
                 );
           
            } else {
-                currentParty = list.ngetParty();
+                currentParty = nList.ngetParty();
                 System.out.println("\n"+currentParty);
                 System.out.println("---------------------------------------------------");
                 
 
                System.out.printf(
                     "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
-                    list.ngetYear(), list.ngetState(), 
-                    list.ngetParty(), list.ngetCandidate(), list.ngetVotes()
+                    nList.ngetYear(), nList.ngetState(), 
+                    nList.ngetParty(), nList.ngetCandidate(), nList.ngetVotes()
                 );
 
                 //ystem.out.println("Going to next state...");
                 //break;
            }
 
-           list.ngetHead();
+           nList.ngetHead();
            count++;
        }
 
      
     }
+
  
 
 }

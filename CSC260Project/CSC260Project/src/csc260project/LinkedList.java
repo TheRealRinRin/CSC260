@@ -192,7 +192,7 @@ public class LinkedList<E> {
         }               
     }
 
-    public void addInOrderByYear(int year, String state, String party, String candidate, int vote){
+    public void OrderByYear(int year, String state, String party, String candidate, int vote){
         Node<E> newNode = new Node(year, state, party, candidate, vote, head, null);
         Node<E> Current = head;
         if(size==0){
@@ -223,9 +223,47 @@ public class LinkedList<E> {
         LinkedList<E> sortedList = new LinkedList<>();
         Node<E> current = head;
         for(int i = 0; i < size; i++){
-            sortedList.addInOrderByYear(current.getYear(), current.getState(), current.getParty(), current.getCandidate(), current.getVotes());
+            sortedList.OrderByYear(current.getYear(), current.getState(), current.getParty(), current.getCandidate(), current.getVotes());
             current = current.next;
         }
         return sortedList;
     }
+
+    public void orderByParty(int year, String state, String party, String candidate, int vote){
+        Node<E> newNode = new Node(year, state, party, candidate, vote, head, null);
+        Node<E> Current = head;
+        if(size==0){
+            addFirst(year, state, party, candidate, vote);
+            return;
+        }else{
+            int count = 0;
+            while(count < size){
+                if(Current.getParty().compareTo(party) > 0){
+                    newNode.next = Current;
+                    newNode.prev = Current.prev;
+                    Current.prev.next = newNode;
+                    Current.prev = newNode;
+                    if(Current == head){
+                        head = newNode;
+                    }
+                    size++;
+                    return;   
+                }
+                Current = Current.next;
+                count++;
+            }        
+            addLast(year, state, party, candidate, vote);    
+        }
+    }
+
+        public LinkedList<?> sortedByParty() {
+            LinkedList<E> sortedList = new LinkedList<>();
+            Node<E> current = head;
+            for(int i = 0; i < size; i++){
+                sortedList.orderByParty(current.getYear(), current.getState(), current.getParty(), current.getCandidate(), current.getVotes());
+                current = current.next;
+            }
+            return sortedList;
+        }
+        
 }
