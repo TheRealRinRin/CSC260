@@ -6,7 +6,7 @@ public class mainMethod {
         // main app where all the methods are called
 
         ReadCSV.main(args);
-        LinkedList myList = new LinkedList<>();
+        //LinkedList myList = new LinkedList<>();
 
         
 

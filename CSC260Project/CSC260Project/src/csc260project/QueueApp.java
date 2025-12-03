@@ -121,7 +121,7 @@ public class QueueApp<g> {
 
        currentState = list.ngetState();
        
-       while(list.getHead() != null){
+       while(true){
            if(currentState.equals(list.ngetState())){
                System.out.printf(
                     "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
@@ -130,8 +130,7 @@ public class QueueApp<g> {
             );
 
                list.ngetHead();
-               System.out.println("Going to next state...");
-               break;
+               
 
            } else {
                currentState = list.ngetState();
@@ -143,6 +142,8 @@ public class QueueApp<g> {
                 );
 
                list.ngetHead();
+               System.out.println("Going to next state...");
+               break;
            }
        }
 

@@ -14,7 +14,7 @@ public class ReadCSV {
     public static void main(String[] args){
         
         //CSV Stands for comma seperated values
-        String file = "./src/csc260project/election_data.csv";
+        String file = "CSC260Project/CSC260Project/src/csc260project/election_data.csv";
         BufferedReader reader = null;
         String line = "";
         try{
