@@ -8,7 +8,7 @@ package csc260project;
  * @author hlib
  */
 public class BinarySearchTree {
-
+// We will use other tree
     private class Node {
         int votes;
         ElectionRecord record;
