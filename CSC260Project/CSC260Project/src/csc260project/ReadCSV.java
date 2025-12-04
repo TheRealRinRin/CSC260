@@ -48,22 +48,15 @@ public class ReadCSV {
             //myList.find("George Allen");
             //myList.forwardDisplay();          
             
-            QueueApp.byState(myList);
-            QueueApp.byYear(myList);
-            QueueApp.byParty(myList);
-            myList.addAtState(2016, "Massachusetts", "Republican", "Darrin Phimphisane", 50);
-            myList.addAtState(2020, "California", "Democrat", "Loens Paul", 50);
-            myList.forwardDisplay();
-            myList.deleteFirst();
-            myList.forwardDisplay();
-            myList.deleteLast();
-            myList.deleteCandidate("Loens Paul");
-            myList.forwardDisplay();
+            //QueueApp.byState(myList);
+            //QueueApp.byYear(myList);
+            //QueueApp.byParty(myList);
+            
             BinarySearchTree bst = new BinarySearchTree();
             myList.traverseAndInsert(bst);
-            System.out.println(bst.findMinVotes(bst.getRoot()));
-            System.out.println(bst.findMaxVotes(bst.getRoot()));
-            System.out.println(bst.findNode(550000));
+            //System.out.println(bst.findMinVotes(bst.getRoot()));
+            //System.out.println(bst.findMaxVotes(bst.getRoot()));
+           // bst.findNode(550000);
         }catch(Exception e){
             e.printStackTrace();
         }               
