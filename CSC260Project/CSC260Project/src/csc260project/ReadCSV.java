@@ -39,6 +39,8 @@ public class ReadCSV {
                 int ElectionYear = Integer.parseInt(electionData.get(i));
                 int ElectionVotes = Integer.parseInt(electionData.get(i+4));            
                 myList.addLast(ElectionYear, electionData.get(i+1), electionData.get(i+2), electionData.get(i+3), ElectionVotes);
+                StackUndo stack = new StackUndo(1000);
+                stack.push(ElectionYear, electionData.get(i+1), electionData.get(i+2), electionData.get(i+3), ElectionVotes);
             }
             //myList.forwardDisplay();
             //myList.find("Linda Young");

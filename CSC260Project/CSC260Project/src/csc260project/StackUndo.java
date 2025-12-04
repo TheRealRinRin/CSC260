@@ -38,12 +38,12 @@ public class StackUndo <g> {
         return (g) stack[top];
     }
     
-    public void push(g value){
+    public void push(int year, String state, String party, String candidate, int votes){
         if(isFull()){
             System.out.println("Stack is overflow");
         } else {
             top = top + 1;
-            stack[top] = value;
+            stack[top] = year + "," + state + "," + party + "," + candidate + "," + votes;
         }
         
     }
@@ -66,6 +66,8 @@ public class StackUndo <g> {
             }
         }
     }
-    
+    public void undo(){
+        
+    }
 }
 
