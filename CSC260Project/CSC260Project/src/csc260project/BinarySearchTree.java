@@ -186,13 +186,13 @@ public class BinarySearchTree {
         System.out.println("Finding Candidate With " + votes + " Votes...");
         BinaryTreeNode foundNode = find(root, votes);
         if(foundNode != null){
-            System.out.println("Candidate Found: " + foundNode.toString());
+            System.out.println("Candidate Found: "+ foundNode.toString());
         }
         return this;
     }
     BinaryTreeNode findMinVotes(BinaryTreeNode node){
         System.out.println();
-        System.out.println("Finding Candidate With Min Votes...");
+        System.out.println("Finding Candidate With Least Votes...");
         if(isEmpty()){
             return null;
         }     
@@ -204,7 +204,7 @@ public class BinarySearchTree {
     
     BinaryTreeNode findMaxVotes(BinaryTreeNode node){
         System.out.println();
-        System.out.println("Finding Candidate With Max Votes...");
+        System.out.println("Finding Candidate With Most Votes...");
         if(isEmpty()){
             return null;
         }     
