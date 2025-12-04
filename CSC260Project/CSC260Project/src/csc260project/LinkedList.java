@@ -361,4 +361,13 @@ public class LinkedList<E> {
             return sortedList;
         }
         
+       public void traverseAndInsert(BinarySearchTree bst){
+        Node<E> current = head;
+        for(int i = 0; i < size; i++){
+            bst.insert(current.year, current.state, current.party, current.candidate, current.votes);
+            current = current.next;
+        }
+    } 
 }
+    
+    

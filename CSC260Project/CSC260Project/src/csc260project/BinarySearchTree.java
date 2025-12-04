@@ -8,20 +8,40 @@ package csc260project;
 public class BinarySearchTree {
     
     private class BinaryTreeNode{
-        private int value; 
         private BinaryTreeNode leftChild;
         private BinaryTreeNode rightChild;
         private BinaryTreeNode parent;
+        private int year;
+        private String state;
+        private String party;
+        private String candidate;
+        private int votes;
         
-        public BinaryTreeNode(int value, BinaryTreeNode leftChild, BinaryTreeNode rightChild, BinaryTreeNode parent){
-            this.value = value; 
+        public BinaryTreeNode(int year, String state, String party, String candidate, int votes, BinaryTreeNode leftChild, BinaryTreeNode rightChild, BinaryTreeNode parent){
+            this.year = year; 
+            this.state  = state;
+            this.party = party;
+            this.candidate = candidate;
+            this.votes = votes;
             this.leftChild = leftChild; 
             this.rightChild = rightChild; 
             this.parent = parent;
         }  
         
-        public int getValue(){
-            return value;
+        public int getYear(){
+            return year;
+        }
+        public String getState(){
+            return state;
+        }
+        public String getParty(){
+            return party;
+        }
+        public String getCandidate(){
+            return candidate;
+        }
+        public int getVotes(){
+            return votes;
         }
         public BinaryTreeNode getLeftChild(){
             return leftChild;
@@ -33,8 +53,20 @@ public class BinarySearchTree {
             return parent;
         }
         
-        public void setValue(int value){
-            this.value = value;
+        public void setYear(int year){
+            this.year = year;
+        }
+        public void setState(String state){
+            this.state = state;
+        }
+        public void setParty(String party){
+            this.party = party;
+        }
+        public void setCandidate(String candidate){
+            this.candidate = candidate;
+        }
+        public void setVotes(int votes){
+            this.votes = votes;
         }
         public void setLeftChild(BinaryTreeNode leftChild){
             this.leftChild = leftChild;
@@ -48,7 +80,7 @@ public class BinarySearchTree {
         
         @Override
         public String toString(){
-            return "" + value;
+            return System.out.printf("Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", year, state, party, candidate, votes).toString();
         }
     }
     private BinaryTreeNode root;
@@ -65,8 +97,8 @@ public class BinarySearchTree {
     boolean isEmpty(){
         return size==0;
     }
-    void insert(int keyVal){
-        BinaryTreeNode newNode = new BinaryTreeNode(keyVal, null, null, null);
+    void insert(int year, String state, String party, String candidate, int votes){
+        BinaryTreeNode newNode = new BinaryTreeNode(year, state, party, candidate, votes, null, null, null);
         if(isEmpty()){
             root = newNode;
             size++;
@@ -76,11 +108,11 @@ public class BinarySearchTree {
             BinaryTreeNode Parent = Current;
             while(true){               
                 Parent = Current;
-                if(keyVal == Current.value){
+                if(votes == Current.votes){
                     System.out.println("Duplicate Found.");
                     return;
                 }
-                else if(keyVal<Current.value){
+                else if(votes < Current.votes){
                     Current = Current.leftChild;
                     if(Current == null){
                         Parent.leftChild = newNode;
@@ -100,32 +132,35 @@ public class BinarySearchTree {
             size++;
         }          
     }  
-    BinaryTreeNode find(BinaryTreeNode node, int keyVal){
+    BinaryTreeNode find(BinaryTreeNode node, int votes){
         if(node==null){
             System.out.println("Searching Failed.");
             return null;
         }
-        if(node.value ==keyVal){
+        if(node.votes == votes){
             return node; // Found
         }
-        if(keyVal < node.value){
-            return find(node.leftChild, keyVal);
+        if(votes < node.votes){
+            return find(node.leftChild, votes);
         }else{
-            return find(node.rightChild, keyVal);
+            return find(node.rightChild, votes);
         }           
     } 
     
-    public int maxDepth(BinaryTreeNode leftNode, BinaryTreeNode rightNode){
+    public int maxDepth(BinaryTreeNode node){
         if(node == null){
-            
+            return 0;
         }
+        int leftDepth = maxDepth(node.leftChild);
+        int rightDepth = maxDepth(node.rightChild);
+        return Math.max(leftDepth, rightDepth) + 1;
     }
     void inorder(BinaryTreeNode node){
         if(node == null){   
             return;            
         }
         inorder(node.leftChild);
-        System.out.println(node.value);
+        System.out.println(node.votes);
         inorder(node.rightChild);    
     }
     void postorder(BinaryTreeNode node){
@@ -134,7 +169,7 @@ public class BinarySearchTree {
         }
         postorder(node.leftChild);
         postorder(node.rightChild);
-        System.out.println(node.value);
+        System.out.println(node.votes);
         
         
     }
@@ -142,12 +177,22 @@ public class BinarySearchTree {
         if(node==null){
             return;
         }
-        System.out.println(node.value);
+        System.out.println(node.votes);
         preorder(node.leftChild);
         preorder(node.rightChild);
     } 
-    
-    BinaryTreeNode findMin(BinaryTreeNode node){
+    BinarySearchTree findNode(int votes){
+        System.out.println();
+        System.out.println("Finding Candidate With " + votes + " Votes...");
+        BinaryTreeNode foundNode = find(root, votes);
+        if(foundNode != null){
+            System.out.println("Candidate Found: " + foundNode.toString());
+        }
+        return this;
+    }
+    BinaryTreeNode findMinVotes(BinaryTreeNode node){
+        System.out.println();
+        System.out.println("Finding Candidate With Min Votes...");
         if(isEmpty()){
             return null;
         }     
@@ -157,7 +202,9 @@ public class BinarySearchTree {
         return node;
     }
     
-    BinaryTreeNode findMax(BinaryTreeNode node){
+    BinaryTreeNode findMaxVotes(BinaryTreeNode node){
+        System.out.println();
+        System.out.println("Finding Candidate With Max Votes...");
         if(isEmpty()){
             return null;
         }     
@@ -166,4 +213,5 @@ public class BinarySearchTree {
         }
         return node;
     }
+    
 }

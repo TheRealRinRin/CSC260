@@ -59,6 +59,11 @@ public class ReadCSV {
             myList.deleteLast();
             myList.deleteCandidate("Loens Paul");
             myList.forwardDisplay();
+            BinarySearchTree bst = new BinarySearchTree();
+            myList.traverseAndInsert(bst);
+            System.out.println(bst.findMinVotes(bst.getRoot()));
+            System.out.println(bst.findMaxVotes(bst.getRoot()));
+            System.out.println(bst.findNode(550000));
         }catch(Exception e){
             e.printStackTrace();
         }               
