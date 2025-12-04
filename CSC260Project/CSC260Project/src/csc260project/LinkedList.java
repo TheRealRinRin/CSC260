@@ -192,7 +192,7 @@ public class LinkedList<E> {
     }        
     addLast(year, state, party, candidate, vote);    
     System.out.println("Candidate "+candidate+" added.");
-}
+    }
 
     public void deleteFirst(){
         if(head == null){
@@ -249,6 +249,44 @@ public class LinkedList<E> {
         }               
     }
 
+    public void updateVotes(String candidate, int newVotes){
+        Node<E> Current = head;
+        if(size==0){
+            System.out.println("List is empty, cannot update");
+            return;
+        }else{
+            int count = 0;
+            while(count < size){
+                if(Current.getCandidate().equals(candidate)){
+                    Current.setVotes(newVotes);
+                    System.out.println("Node with candidate "+candidate+" updated with new votes: "+newVotes);
+                    return;   
+                }
+                Current = Current.next;
+                count++;
+            }        
+            System.out.println("Candidate "+candidate+" not found, cannot update");    
+        }               
+    }
+    public void updateParty(String candidate, String newParty){
+        Node<E> Current = head;
+        if(size==0){
+            System.out.println("List is empty, cannot update");
+            return;
+        }else{
+            int count = 0;
+            while(count < size){
+                if(Current.getCandidate().equals(candidate)){
+                    Current.setParty(newParty);
+                    System.out.println("Node with candidate "+candidate+" updated with new party: "+newParty);
+                    return;   
+                }
+                Current = Current.next;
+                count++;
+            }        
+            System.out.println("Candidate "+candidate+" not found, cannot update");    
+        }               
+    }
     public void OrderByYear(int year, String state, String party, String candidate, int vote){
         Node<E> newNode = new Node(year, state, party, candidate, vote, head, null);
         Node<E> Current = head;
