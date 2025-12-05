@@ -6,16 +6,20 @@ package csc260project;
 // HELLO EVERYONE 
 /**
  *
- * @author darrin
+ * @author darrin phimphisane, hlib zhukov
  */
 import java.io.*;
 import java.util.ArrayList;
 public class ReadCSV {
 
     private static LinkedList myList = new LinkedList<>();
+    private static BinarySearchTree bst = new BinarySearchTree();
     
     public ReadCSV(LinkedList<String> list) {
         ReadCSV.myList = list;
+    }
+    public ReadCSV(BinarySearchTree tree){
+        ReadCSV.bst = tree;
     }
     public static void main(String[] args){
         
@@ -59,7 +63,6 @@ public class ReadCSV {
             //QueueApp.byYear(myList);
             //QueueApp.byParty(myList);
             
-            BinarySearchTree bst = new BinarySearchTree();
             myList.traverseAndInsert(bst);
             //System.out.println(bst.findMinVotes(bst.getRoot()));
             //System.out.println(bst.findMaxVotes(bst.getRoot()));

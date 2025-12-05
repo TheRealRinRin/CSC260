@@ -6,7 +6,7 @@ package csc260project;
 
 /**
  *
- * @author darrin phimphisane
+ * @author darrin phimphisane, loens paul, hlib zhukov
  */
 public class CSC260Project {
 
@@ -16,6 +16,7 @@ public class CSC260Project {
     public static void main(String[] args) {
         // TODO code application logic here
         LinkedList myList = new LinkedList<>();
+        BinarySearchTree bst = new BinarySearchTree();
         ReadCSV read = new ReadCSV(myList);
         read.main(args);
         myList.forwardDisplay();

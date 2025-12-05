@@ -5,6 +5,8 @@ public class QueueApp<g> {
     // bst alows to traverse by vote count
     // queue allow by year, state, party
 
+
+    // Author: Loens M Paul
     /**
      * @param args the command line arguments
      */

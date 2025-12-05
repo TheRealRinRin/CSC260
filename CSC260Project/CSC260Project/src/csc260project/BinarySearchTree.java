@@ -3,7 +3,7 @@ package csc260project;
 
 /**
  *
- * @author therealrinrin
+ * @author hlib zhukov
  */
 public class BinarySearchTree {
     
