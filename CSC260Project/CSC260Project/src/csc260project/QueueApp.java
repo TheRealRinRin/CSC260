@@ -124,6 +124,7 @@ public class QueueApp<g> {
        
         System.out.println("\n \n Printing by State...");
         if(count == 0){
+            System.out.println();
             System.out.println(currentState);
             System.out.println("---------------------------------------------------");
         }
@@ -142,29 +143,23 @@ public class QueueApp<g> {
           
            } else {
                 currentState = list.ngetState();
+                System.out.println();
                 System.out.println(currentState);
                 System.out.println("---------------------------------------------------");
-                
-
                System.out.printf(
                     "Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
                     list.ngetYear(), list.ngetState(), 
                     list.ngetParty(), list.ngetCandidate(), list.ngetVotes()
                 );
-
                 if(list.ngetState() == null){
                     break;
                 }
-
                 //ystem.out.println("Going to next state...");
                 //break;
            }
-
            list.ngetHead();
            count++;
        }
-
-     
     }
 
     public static void byYear(LinkedList<?> list){
@@ -180,6 +175,7 @@ public class QueueApp<g> {
        
         System.out.println("\n \n Printing by Year...");
         if(count == 0){
+            System.out.println();
             System.out.println(currentYear);
             System.out.println("---------------------------------------------------");
         }
@@ -198,6 +194,7 @@ public class QueueApp<g> {
           
            } else {
                 currentYear = nList.ngetYear();
+                System.out.println();
                 System.out.println("\n"+currentYear);
                 System.out.println("---------------------------------------------------");
                 
@@ -232,6 +229,7 @@ public class QueueApp<g> {
        
         System.out.println("\n \n Printing by Party...");
         if(count == 0){
+            System.out.println();
             System.out.println(currentParty);
             System.out.println("---------------------------------------------------");
         }
@@ -250,6 +248,7 @@ public class QueueApp<g> {
           
            } else {
                 currentParty = nList.ngetParty();
+                System.out.println();
                 System.out.println("\n"+currentParty);
                 System.out.println("---------------------------------------------------");
                 

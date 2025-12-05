@@ -19,7 +19,11 @@ public class CSC260Project {
         ReadCSV read = new ReadCSV(myList);
         read.main(args);
         myList.forwardDisplay();
-        QueueApp.byState(myList);        
+        QueueApp.byState(myList);       
+        QueueApp.byYear(myList);
+        QueueApp.byParty(myList);
+       
+        
         
     }
     

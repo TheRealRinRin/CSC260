@@ -4,6 +4,7 @@
  */
 package csc260project;
 
+
 /**
  *
  * @author darri
@@ -166,6 +167,7 @@ public class LinkedList<E> {
     }
     
     public void addAtState(int year, String state, String party, String candidate, int vote){
+    
     if(size==0){
         addFirst(year, state, party, candidate, vote);
         return;
