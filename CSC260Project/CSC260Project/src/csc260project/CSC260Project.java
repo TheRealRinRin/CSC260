@@ -15,11 +15,11 @@ public class CSC260Project {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ReadCSV rc = new ReadCSV();
-        ReadCSV.main(args);
-        QueueApp qa = new QueueApp();
-        QueueApp.main(args);
-        
+        LinkedList myList = new LinkedList<>();
+        ReadCSV read = new ReadCSV(myList);
+        read.main(args);
+        myList.forwardDisplay();
+        QueueApp.byState(myList);        
         
     }
     

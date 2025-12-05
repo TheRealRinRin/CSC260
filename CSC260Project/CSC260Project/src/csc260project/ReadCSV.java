@@ -11,6 +11,12 @@ package csc260project;
 import java.io.*;
 import java.util.ArrayList;
 public class ReadCSV {
+
+    private static LinkedList myList = new LinkedList<>();
+    
+    public ReadCSV(LinkedList<String> list) {
+        ReadCSV.myList = list;
+    }
     public static void main(String[] args){
         
         //CSV Stands for comma seperated values
@@ -34,7 +40,6 @@ public class ReadCSV {
             //System.out.println(Integer.parseInt(electionData.get(5)));
             //System.out.println("Size: " +electionData.size());
             
-            LinkedList myList = new LinkedList<>();
             for(int i = 5; i<electionData.size()-1; i+=5){
                 int ElectionYear = Integer.parseInt(electionData.get(i));
                 int ElectionVotes = Integer.parseInt(electionData.get(i+4));            
