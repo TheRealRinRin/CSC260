@@ -100,7 +100,7 @@ public class BinarySearchTree {
     void insert(int year, String state, String party, String candidate, int votes){
         BinaryTreeNode newNode = new BinaryTreeNode(year, state, party, candidate, votes, null, null, null);
         if(isEmpty()){
-            root = newNode;
+            root = newNode;            
             size++;
             return;
         }else{
@@ -109,7 +109,7 @@ public class BinarySearchTree {
             while(true){               
                 Parent = Current;
                 if(votes == Current.votes){
-                    System.out.println("Duplicate Found.");
+                    //System.out.println("Duplicate Found.");
                     return;
                 }
                 else if(votes < Current.votes){

@@ -151,6 +151,7 @@ public class LinkedList<E> {
             head.prev = newNode;
             tail = newNode; 
         }
+        //StackUndo.push(year, state, party, candidate, vote);
         size++;
     }
     public void find(String e){

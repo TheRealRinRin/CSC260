@@ -14,12 +14,17 @@ public class ReadCSV {
 
     private static LinkedList myList = new LinkedList<>();
     private static BinarySearchTree bst = new BinarySearchTree();
+    private static StackUndo stack = new StackUndo(1000);
     
     public ReadCSV(LinkedList<String> list) {
         ReadCSV.myList = list;
     }
     public ReadCSV(BinarySearchTree tree){
         ReadCSV.bst = tree;
+    }
+    public ReadCSV(StackUndo s){
+        ReadCSV.stack = s;
+        
     }
     public static void main(String[] args){
         
@@ -48,7 +53,7 @@ public class ReadCSV {
                 int ElectionYear = Integer.parseInt(electionData.get(i));
                 int ElectionVotes = Integer.parseInt(electionData.get(i+4));            
                 myList.addLast(ElectionYear, electionData.get(i+1), electionData.get(i+2), electionData.get(i+3), ElectionVotes);
-                StackUndo stack = new StackUndo(1000);
+                //stack = new StackUndo(1000);
                 stack.push(ElectionYear, electionData.get(i+1), electionData.get(i+2), electionData.get(i+3), ElectionVotes);
             }
             //myList.forwardDisplay();

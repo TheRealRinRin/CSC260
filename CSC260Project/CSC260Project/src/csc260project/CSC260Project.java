@@ -17,15 +17,24 @@ public class CSC260Project {
         // TODO code application logic here
         LinkedList myList = new LinkedList<>();
         BinarySearchTree bst = new BinarySearchTree();
+        StackUndo stack = new StackUndo(1000);
         ReadCSV read = new ReadCSV(myList);
+        ReadCSV s = new ReadCSV(stack);
+        ReadCSV t = new ReadCSV(bst);
+
         read.main(args);
+        
+
         myList.forwardDisplay();
         QueueApp.byState(myList);       
         QueueApp.byYear(myList);
         QueueApp.byParty(myList);
-       
-        
-        
+
+        stack.display();
+        stack.undo();
+        stack.display();
+
+        bst.inorder(bst.getRoot());
     }
     
 }

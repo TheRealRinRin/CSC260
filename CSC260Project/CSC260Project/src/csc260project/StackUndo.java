@@ -15,11 +15,17 @@ public class StackUndo <g> {
      */
 
     private Object[] stack;
-    //private int size;
+    // to keep track of previous state for undo functionality
+    private Object[] stackBefore;
+    private int capacity;
+    
     private int top = -1;
     
     public StackUndo(int capacity){
+        this.capacity = capacity;
         stack = new Object[capacity];
+        stackBefore = new Object[capacity];
+
     }
 
     public boolean isEmpty(){
@@ -43,30 +49,52 @@ public class StackUndo <g> {
             System.out.println("Stack is overflow");
         } else {
             top = top + 1;
-            stack[top] = year + "," + state + "," + party + "," + candidate + "," + votes;
+            stack[top] = String.format("Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
+            year, state, party, candidate, votes);
+            if(top > 0){
+                stackBefore[top] = stack[top -1];
+            }
+            //size++;
         }
         
     }
     public g pop(){
         if(isEmpty()){
             System.out.println("Stack is underflow");
-            
+            return null;
+        } else if(top == 0){
+            System.out.println("No more undos available");
+            return null;
         } 
-            g temp = (g) stack[top];
-            top = top - 1;
-            return temp;
+        stackBefore = stack;
+        g temp = (g) stack[top];
+        top = top - 1;
+        //size--;
+        return temp;
+
     }
 
     public void display(){
         if(isEmpty()){
             System.out.println("Stack is empty");
         } else {
-            for(int k = 0; k <= top + 1; k++){
-                System.out.println(stack[k]);
+            System.out.println("\nDisplaying stack contents:");
+            for(int k = 0; k <= top; k++){
+                if(stack[k] == null){
+                    System.out.println("");
+                } else {
+                    System.out.println(stack[k]);
+                }
             }
         }
     }
     public void undo(){
+        if(isEmpty()){
+            System.out.println("Stack is empty, cannot undo");
+        } else {
+            System.out.println("\nUndoing last action... \n");
+            stack = stackBefore;
+        }
         
     }
 }
