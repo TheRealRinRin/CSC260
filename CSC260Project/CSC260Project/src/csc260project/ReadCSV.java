@@ -26,6 +26,10 @@ public class ReadCSV {
         ReadCSV.stack = s;
         
     }
+    public void addData(int year, String state, String party, String candidate, int votes){
+        myList.addLast(year, state, party, candidate, votes);
+        stack.push(year, state, party, candidate, votes);
+    }
     public static void main(String[] args){
         
         //CSV Stands for comma seperated values

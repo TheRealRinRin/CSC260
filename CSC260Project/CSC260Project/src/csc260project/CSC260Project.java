@@ -31,12 +31,16 @@ public class CSC260Project {
         QueueApp.byParty(myList);
 
         
-        stack.display();
-        stack.display();
+        stack.display();        
         stack.undo();
         stack.display();
 
         bst.inorder(bst.getRoot());
+
+        read.addData(2024, "California", "Independent", "John Doe", 69);
+        stack.display();
+        myList.forwardDisplay();
+
     }
     
 }

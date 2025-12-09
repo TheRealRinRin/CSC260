@@ -1,5 +1,7 @@
 package csc260project;
 
+import java.util.Arrays;
+
 public class StackUndo <g> {
     // stack to implement undo functionality
     // have an undo method in main that run stack pop
@@ -48,12 +50,13 @@ public class StackUndo <g> {
         if(isFull()){
             System.out.println("Stack is overflow");
         } else {
+
+            stackBefore = Arrays.copyOf(stack, stack.length);
             top = top + 1;
+            
             stack[top] = String.format("Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", 
             year, state, party, candidate, votes);
-            if(top > 0){
-                stackBefore[top] = stack[top -1];
-            }
+            
             //size++;
         }
         
@@ -66,7 +69,7 @@ public class StackUndo <g> {
             System.out.println("No more undos available");
             return null;
         } 
-        stackBefore = stack;
+        stackBefore = Arrays.copyOf(stack, stack.length);
         g temp = (g) stack[top];
         top = top - 1;
         //size--;
@@ -93,7 +96,7 @@ public class StackUndo <g> {
             System.out.println("Stack is empty, cannot undo");
         } else {
             System.out.println("\nUndoing last action... \n");
-            stack = stackBefore;
+            stack = Arrays.copyOf(stackBefore, stackBefore.length);
         }
         
     }
