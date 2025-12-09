@@ -30,6 +30,8 @@ public class CSC260Project {
         QueueApp.byYear(myList);
         QueueApp.byParty(myList);
 
+        
+        stack.display();
         stack.display();
         stack.undo();
         stack.display();

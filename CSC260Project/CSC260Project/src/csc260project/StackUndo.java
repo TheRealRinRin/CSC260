@@ -81,9 +81,9 @@ public class StackUndo <g> {
             System.out.println("\nDisplaying stack contents:");
             for(int k = 0; k <= top; k++){
                 if(stack[k] == null){
-                    System.out.println("");
+                    System.out.printf("");
                 } else {
-                    System.out.println(stack[k]);
+                    System.out.printf("%s",stack[k]);
                 }
             }
         }

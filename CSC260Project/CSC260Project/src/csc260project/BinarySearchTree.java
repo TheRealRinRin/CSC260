@@ -160,7 +160,7 @@ public class BinarySearchTree {
             return;            
         }
         inorder(node.leftChild);
-        System.out.println(node.votes);
+        System.out.printf("Year: %-2d | State: %-15s | Party: %-10s | Candidate: %-20s | Votes: %-15d%n", node.year, node.state, node.party, node.candidate, node.votes);
         inorder(node.rightChild);    
     }
     void postorder(BinaryTreeNode node){
